@@ -1,0 +1,16 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Entornos virtuales (No subir nunca)
+venv/
+.env
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Archivos de datos (Opcional: decide si quieres subir los csv o no)
+# Si son datos confidenciales del cliente, descomenta la siguiente linea:
+# *.xlsx
+# *.csv
+
+# Archivos de sistema Mac (Si usas Mac)
+.DS_Store
