@@ -87,7 +87,7 @@ t1, t2, t3, t4, t5, t6 = st.columns(6)
 t1.image("https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", width=40, caption="Python")
 t2.image("https://upload.wikimedia.org/wikipedia/commons/2/22/Pandas_mark.svg", width=40, caption="Pandas")
 t3.image("https://streamlit.io/images/brand/streamlit-mark-color.png", width=40, caption="Streamlit")
-t4.image("https://upload.wikimedia.org/wikipedia/commons/3/37/Plotly-logo-01-square.png", width=40, caption="Plotly")
+t4.image("https://images.plot.ly/logo/new-branding/plotly-logomark.png", width=40, caption="Plotly")
 t5.image("https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg", width=40, caption="Notion")
 t6.image("https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png", width=40, caption="Git")
 
