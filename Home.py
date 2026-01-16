@@ -4,7 +4,7 @@ from PIL import Image
 # Configuración de la página (Título de la pestaña y layout)
 st.set_page_config(
     page_title="Portfolio Pablo Giménez",
-    page_icon="🚀",
+    page_icon="🚲",
     layout="wide"
 )
 
@@ -14,7 +14,7 @@ col1, col2 = st.columns([1, 2])
 with col1:
     # Si tienes una foto tuya o un logo, podrías ponerlo aquí.
     # Por ahora usamos un emoji gigante o un placeholder.
-    st.image("https://cdn-icons-png.flaticon.com/512/4727/4727450.png", width=150)
+    st.image("https://cdn-icons-png.flaticon.com/512/3198/3198356.png", width=150)
 
 with col2:
     st.title("Pablo Giménez López")
