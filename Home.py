@@ -37,7 +37,7 @@ with st.sidebar:
     st.markdown("🔗 **LinkedIn:** [Ver Perfil](https://www.linkedin.com/)")
     
     st.markdown("---")
-    st.write("© 2026 PGL Solutions")
+    st.write("© 2026 PGL Soluciones")
 
 # --- CUERPO PRINCIPAL ---
 
