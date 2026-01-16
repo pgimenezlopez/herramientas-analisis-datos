@@ -25,7 +25,7 @@ st.markdown("""
 
 # --- SIDEBAR (TU PERFIL PROFESIONAL) ---
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/3198/3198356.png", width=120) # Tu bici
+    st.image("https://cdn-icons-png.flaticon.com/512/2972/2972185.png", width=120) # Tu bici
     st.title("Pablo Giménez López")
     st.caption("Ingeniero en Computación | PM | Data Enthusiast")
     
