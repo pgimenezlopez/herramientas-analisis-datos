@@ -75,12 +75,6 @@ with col2:
     st.progress(100, text="Estado: Listo para usar")
     st.page_link("pages/02_📂_Consolidador_Excel.py", label="Unificar Excels", icon="⚡")
 
-with col3:
-    st.container(border=True)
-    st.markdown("### ⏰ Auditoría RRHH")
-    st.write("Detección de fraudes en relojes biométricos y control de aumentos de precios en proveedores.")
-    st.progress(80, text="Estado: Beta")
-    st.page_link("pages/03_⏰_Auditor_RRHH.py", label="Auditar Ahora", icon="🔍")
 
 st.divider()
 
