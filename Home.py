@@ -42,7 +42,7 @@ with st.sidebar:
 # --- CUERPO PRINCIPAL ---
 
 # 1. HEADER CON IMPACTO
-st.title("🚀 Transformando Datos en Decisiones")
+st.title("🚲 Transformando Datos en Decisiones")
 st.markdown("""
 **Ayudo a gerentes y empresas a dejar de perder tiempo en tareas manuales.** Desarrollo herramientas de automatización y análisis que convierten planillas de Excel caóticas en tableros de control inteligentes.
 """)
