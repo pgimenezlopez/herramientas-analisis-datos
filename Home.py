@@ -3,7 +3,7 @@ from PIL import Image
 
 # --- CONFIGURACIÓN DE PÁGINA ---
 st.set_page_config(
-    page_title="PGL: Soluciones de Datos",
+    page_title="PDGL: Soluciones de Datos",
     page_icon="🚲",
     layout="wide",
     initial_sidebar_state="expanded"
