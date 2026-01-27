@@ -1,98 +1,91 @@
 import streamlit as st
-from PIL import Image
+import base64
 
 # --- CONFIGURACIÓN DE PÁGINA ---
 st.set_page_config(
-    page_title="PGL: Soluciones de Datos",
-    page_icon="🚲",
+    page_title="PDGL Engineering Hub",
+    page_icon="⚙️",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
-# --- ESTILOS CSS PERSONALIZADOS (Para darle un toque 'Pro') ---
+# --- ESTILOS VISUALES (CSS) ---
 st.markdown("""
 <style>
-    [data-testid="stMetricValue"] {
-        font-size: 25px;
-        color: #FF4B4B;
+    /* Títulos y fuentes */
+    h1 {color: #0F172A; font-family: 'Helvetica Neue', sans-serif; font-weight: 800;}
+    h3 {color: #334155;}
+    
+    /* Tarjetas de los módulos */
+    div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"] {
+        background-color: #F8FAFC;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
-    h1 {
-        font-family: 'Helvetica Neue', sans-serif;
-        font-weight: 700;
+    
+    /* Botones destacados */
+    .stButton button {
+        background-color: #2563EB;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# --- SIDEBAR (TU PERFIL PROFESIONAL) ---
-with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/2972/2972185.png", width=120) # Tu bici
-    st.title("Pablo Giménez López")
-    st.caption("Ingeniero en Computación | PM | Data Enthusiast")
-    
-    st.markdown("---")
-    
-    st.markdown("📍 **Ubicación:** Uruguay 🇺🇾")
-    st.markdown("🎓 **Educación:** FING / Udelar")
-    st.markdown("📧 **Contacto:** [Email](mailto:tu@email.com)")
-    st.markdown("🔗 **LinkedIn:** [Ver Perfil](https://www.linkedin.com/)")
-    
-    st.markdown("---")
-    st.write("© 2026 PGL Soluciones")
-
-# --- CUERPO PRINCIPAL ---
-
-# 1. HEADER CON IMPACTO
-st.title("🚲 Transformando Datos en Decisiones")
-st.markdown("""
-**Ayudo a gerentes y empresas a dejar de perder tiempo en tareas manuales.** Desarrollo herramientas de automatización y análisis que convierten planillas de Excel caóticas en tableros de control inteligentes.
-""")
-
-# 2. MÉTRICAS (Simuladas para mostrar valor)
-c1, c2, c3, c4 = st.columns(4)
-c1.metric("Horas Ahorradas/Mes", "+120 h", "Automatización")
-c2.metric("Precisión de Datos", "99.9%", "Sin error humano")
-c3.metric("Reportes Generados", "Automático", "Tiempo Real")
-c4.metric("Tecnología", "Python", "v3.12")
-
-st.divider()
-
-# 3. PORTAFOLIO DE SOLUCIONES (Tus Apps)
-st.subheader("🛠️ Mis Herramientas")
-
-col1, col2, col3 = st.columns(3)
-
+# --- ENCABEZADO ---
+col1, col2 = st.columns([1, 8])
 with col1:
-    st.container(border=True)
-    st.markdown("### 🚍 Monitor STM")
-    st.write("Análisis de movilidad urbana en Montevideo. Visualiza patrones de viaje, tiempos y rutas frecuentes.")
-    st.progress(90, text="Estado: Producción")
-    st.page_link("pages/01_📊_Analisis_STM.py", label="Ver Dashboard", icon="📊")
-
+    # Logo conceptual (engranaje/tecnología)
+    st.image("https://cdn-icons-png.flaticon.com/512/8637/8637106.png", width=90)
 with col2:
-    st.container(border=True)
-    st.markdown("### 📂 Consolidador Pro")
-    st.write("Olvídate de 'copiar y pegar'. Une cientos de archivos Excel con formatos distintos en segundos.")
-    st.progress(100, text="Estado: Listo para usar")
-    st.page_link("pages/02_📂_Consolidador_Excel.py", label="Unificar Excels", icon="⚡")
+    st.title("Solutions Hub")
+    st.caption("INGENIERÍA DE DATOS & AUTOMATIZACIÓN DE PROCESOS | PABLO GIMÉNEZ")
 
+st.markdown("---")
 
-st.divider()
+st.info("💡 **Bienvenido.** Selecciona un módulo para iniciar una solución automatizada.")
 
-# 4. TECH STACK (Autoridad Técnica)
-st.subheader("💻 Stack Tecnológico")
-st.markdown("No uso macros de Excel. Uso ingeniería de software moderna:")
+# --- GRID DE MÓDULOS ---
+st.subheader("🚀 Catálogo de Soluciones")
 
-# Usamos columnas pequeñas para iconos
-t1, t2, t3, t4, t5, t6 = st.columns(6)
-t1.image("https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", width=40, caption="Python")
-t2.image("https://upload.wikimedia.org/wikipedia/commons/2/22/Pandas_mark.svg", width=40, caption="Pandas")
-t3.image("https://streamlit.io/images/brand/streamlit-mark-color.png", width=40, caption="Streamlit")
-t4.image("https://images.plot.ly/logo/new-branding/plotly-logomark.png", width=40, caption="Plotly")
-t5.image("https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg", width=40, caption="Notion")
-t6.image("https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png", width=40, caption="Git")
+c1, c2, c3 = st.columns(3)
 
-# 5. LLAMADA A LA ACCIÓN (CTA) FINAL
-st.info("""
-💡 **¿Tienes un proceso manual que te quita el sueño?**
-Escríbeme y agendemos una llamada de 15 minutos para ver si se puede automatizar.
-""")
+# Altura total de la tarjeta
+altura_tarjeta = 280
+
+# Estilo para fijar la altura del texto (aprox 3 a 4 lineas)
+estilo_texto = "height: 70px; display: flex; align-items: center;"
+
+# MÓDULO 1: TRANSPORTE
+with c1:
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 📊 Monitor STM")
+        # Usamos HTML para fijar la altura del texto a 70px siempre
+        st.markdown(f'<div style="{estilo_texto}">Análisis de movilidad urbana y detección de patrones de transporte.</div>', unsafe_allow_html=True)
+        st.progress(100, "Versión 1.0")
+        st.write("") 
+        if st.button("Abrir Monitor ↗️", key="btn_stm", use_container_width=True):
+            st.switch_page("pages/01_📊_Analisis_STM.py")
+
+# MÓDULO 2: EXCEL
+with c2:
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 📂 Consolidador Excel")
+        # El div invisible ocupa el mismo espacio aunque el texto sea mas corto
+        st.markdown(f'<div style="{estilo_texto}">Unificación automática de múltiples reportes financieros y logísticos.</div>', unsafe_allow_html=True)
+        st.progress(100, "Versión 2.1")
+        st.write("")
+        if st.button("Abrir Consolidador ↗️", key="btn_excel", use_container_width=True):
+            st.switch_page("pages/02_📂_Consolidador_Excel.py")
+
+# MÓDULO 3: VETERINARIA
+with c3:
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 🐾 Gestión Veterinaria")
+        st.markdown(f'<div style="{estilo_texto}">Sistema de alertas de vacunación y retención de clientes.</div>', unsafe_allow_html=True)
+        st.progress(90, "Versión MVP")
+        st.write("")
+        if st.button("Abrir Alertas ↗️", key="btn_vet", use_container_width=True):
+            st.switch_page("pages/03_🐶_Gestor_Vacunas.py")
