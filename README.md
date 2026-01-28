@@ -38,7 +38,9 @@ Herramienta de gestión para profesionales de la salud/coaching.
    git clone [https://github.com/pgimenezlopez/herramientas-analisis-datos.git](https://github.com/pgimenezlopez/herramientas-analisis-datos.git)
 
 2. **Instalar dependiencias:**
-pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
 
 3. **Ejecutar la suite:**
-streamlit run Home.py
+    ```bash
+    streamlit run Home.py
