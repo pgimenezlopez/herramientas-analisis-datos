@@ -101,4 +101,4 @@ with c1:
         
         # AQUÍ ESTABA EL ERROR: Ahora está limpio
         if st.button("Abrir Suite ↗️", key="btn_coaching", use_container_width=True):
-            st.switch_page("pages/05_🧘_Gestion_de_Pacientes.py")
+            st.switch_page("pages/04_🧘_Gestion_de_Pacientes.py")
