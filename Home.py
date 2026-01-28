@@ -3,7 +3,7 @@ import base64
 
 # --- CONFIGURACIÓN DE PÁGINA ---
 st.set_page_config(
-    page_title="PDGL Engineering Hub",
+    page_title="PGL Centro de Soluciones",
     page_icon="⚙️",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -40,7 +40,7 @@ with col1:
     # Logo conceptual (engranaje/tecnología)
     st.image("https://cdn-icons-png.flaticon.com/512/8637/8637106.png", width=90)
 with col2:
-    st.title("Solutions Hub")
+    st.title("PGL Centro de Soluciones")
     st.caption("INGENIERÍA DE DATOS & AUTOMATIZACIÓN DE PROCESOS | PABLO GIMÉNEZ")
 
 st.markdown("---")
@@ -89,3 +89,16 @@ with c3:
         st.write("")
         if st.button("Abrir Alertas ↗️", key="btn_vet", use_container_width=True):
             st.switch_page("pages/03_🐶_Gestor_Vacunas.py")
+
+# MÓDULO 4: COACHING
+with c1:
+   with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 🧘 Gestión de Pacientes")
+        # Descripción con altura fija
+        st.markdown(f'<div style="{estilo_texto}">Plataforma de seguimiento de pacientes, historial clínico y métricas.</div>', unsafe_allow_html=True)
+        st.progress(90, "Versión MVP")
+        st.write("")
+        
+        # AQUÍ ESTABA EL ERROR: Ahora está limpio
+        if st.button("Abrir Suite ↗️", key="btn_coaching", use_container_width=True):
+            st.switch_page("pages/05_🧘_Gestion_de_Pacientes.py")
