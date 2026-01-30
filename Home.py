@@ -102,3 +102,15 @@ with c1:
         # AQUÍ ESTABA EL ERROR: Ahora está limpio
         if st.button("Abrir Suite ↗️", key="btn_coaching", use_container_width=True):
             st.switch_page("pages/04_🧘_Gestion_de_Pacientes.py")
+
+# MÓDULO 5: ESTÉTICA MÓVIL
+with c2:
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 📍 Estética Móvil")
+        st.markdown(f'<div style="{estilo_texto}">Optimización de rutas y fichas de clientes para servicios a domicilio.</div>', unsafe_allow_html=True)
+        st.progress(15, "En Diseño")
+        st.write("")
+        
+        # AQUÍ ESTÁ EL CAMBIO:
+        if st.button("Abrir Rutas ↗️", key="btn_estetica", use_container_width=True):
+            st.switch_page("pages/05_📍_Estetica_Movil.py")
