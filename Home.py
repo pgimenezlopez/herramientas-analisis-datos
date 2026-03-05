@@ -50,67 +50,79 @@ st.info("💡 **Bienvenido.** Selecciona un módulo para iniciar una solución a
 # --- GRID DE MÓDULOS ---
 st.subheader("🚀 Catálogo de Soluciones")
 
+altura_tarjeta = 270
+estilo_texto = "height: 60px; display: flex; align-items: center;"
+
+# Definimos 3 columnas para la fila 1
 c1, c2, c3 = st.columns(3)
 
-# Altura total de la tarjeta
-altura_tarjeta = 280
+# --- FILA 1 ---
 
-# Estilo para fijar la altura del texto (aprox 3 a 4 lineas)
-estilo_texto = "height: 70px; display: flex; align-items: center;"
-
-# MÓDULO 1: TRANSPORTE
-with c1:
+with c1: # TRANSPORTE
     with st.container(height=altura_tarjeta, border=True):
         st.markdown("### 📊 Monitor STM")
-        # Usamos HTML para fijar la altura del texto a 70px siempre
-        st.markdown(f'<div style="{estilo_texto}">Análisis de movilidad urbana y detección de patrones de transporte.</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="{estilo_texto}">Análisis de movilidad urbana y patrones.</div>', unsafe_allow_html=True)
         st.progress(100, "Versión 1.0")
-        st.write("") 
         if st.button("Abrir Monitor ↗️", key="btn_stm", use_container_width=True):
             st.switch_page("pages/01_📊_Analisis_STM.py")
 
-# MÓDULO 2: EXCEL
-with c2:
+with c2: # EXCEL
     with st.container(height=altura_tarjeta, border=True):
-        st.markdown("### 📂 Consolidador Excel")
-        # El div invisible ocupa el mismo espacio aunque el texto sea mas corto
-        st.markdown(f'<div style="{estilo_texto}">Unificación automática de múltiples reportes financieros y logísticos.</div>', unsafe_allow_html=True)
+        st.markdown("### 📂 Consolidador")
+        st.markdown(f'<div style="{estilo_texto}">Unificación de reportes financieros.</div>', unsafe_allow_html=True)
         st.progress(100, "Versión 2.1")
-        st.write("")
-        if st.button("Abrir Consolidador ↗️", key="btn_excel", use_container_width=True):
+        if st.button("Abrir Excel ↗️", key="btn_excel", use_container_width=True):
             st.switch_page("pages/02_📂_Consolidador_Excel.py")
 
-# MÓDULO 3: VETERINARIA
-with c3:
+with c3: # VETERINARIA
     with st.container(height=altura_tarjeta, border=True):
-        st.markdown("### 🐾 Gestión Veterinaria")
-        st.markdown(f'<div style="{estilo_texto}">Sistema de alertas de vacunación y retención de clientes.</div>', unsafe_allow_html=True)
+        st.markdown("### 🐾 Gestión Vet")
+        st.markdown(f'<div style="{estilo_texto}">Alertas de vacunas y CRM.</div>', unsafe_allow_html=True)
         st.progress(90, "Versión MVP")
-        st.write("")
-        if st.button("Abrir Alertas ↗️", key="btn_vet", use_container_width=True):
-            st.switch_page("pages/03_🐶_Gestor_Vacunas.py")
+        if st.button("Abrir Vet ↗️", key="btn_vet", use_container_width=True):
+            st.switch_page("pages/04_🐶_Gestor_Vacunas.py")
 
-# MÓDULO 4: COACHING
-with c1:
-   with st.container(height=altura_tarjeta, border=True):
-        st.markdown("### 🧘 Gestión de Pacientes")
-        # Descripción con altura fija
-        st.markdown(f'<div style="{estilo_texto}">Plataforma de seguimiento de pacientes, historial clínico y métricas.</div>', unsafe_allow_html=True)
+st.write("") # Separador visual
+
+# --- FILA 2 ---
+c4, c5, c6 = st.columns(3)
+
+with c4: # COACHING
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 🧘 Plataforma Salud")
+        st.markdown(f'<div style="{estilo_texto}">Seguimiento de pacientes y métricas.</div>', unsafe_allow_html=True)
         st.progress(90, "Versión MVP")
-        st.write("")
-        
-        # AQUÍ ESTABA EL ERROR: Ahora está limpio
-        if st.button("Abrir Suite ↗️", key="btn_coaching", use_container_width=True):
-            st.switch_page("pages/04_🧘_Gestion_de_Pacientes.py")
+        if st.button("Abrir Salud ↗️", key="btn_coaching", use_container_width=True):
+            st.switch_page("pages/05_🧘_Coaching_Pacientes.py")
 
-# MÓDULO 5: ESTÉTICA MÓVIL
-with c2:
+with c5: # ESTÉTICA (AGENDA)
     with st.container(height=altura_tarjeta, border=True):
         st.markdown("### 📍 Estética Móvil")
-        st.markdown(f'<div style="{estilo_texto}">Optimización de rutas y fichas de clientes para servicios a domicilio.</div>', unsafe_allow_html=True)
-        st.progress(15, "En Diseño")
-        st.write("")
-        
-        # AQUÍ ESTÁ EL CAMBIO:
-        if st.button("Abrir Rutas ↗️", key="btn_estetica", use_container_width=True):
+        st.markdown(f'<div style="{estilo_texto}">Agenda inteligente y turnos.</div>', unsafe_allow_html=True)
+        st.progress(100, "Versión Pro")
+        if st.button("Abrir Agenda ↗️", key="btn_estetica", use_container_width=True):
             st.switch_page("pages/05_📍_Estetica_Movil.py")
+
+with c6: # LOGÍSTICA (NUEVO)
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 🚚 Logística Pyme")
+        st.markdown(f'<div style="{estilo_texto}">Rutas de reparto y control de chofer.</div>', unsafe_allow_html=True)
+        st.progress(80, "Nuevo Módulo")
+        # Este botón abre el archivo 06 que acabamos de crear
+        if st.button("Abrir Reparto ↗️", key="btn_logistica", use_container_width=True):
+            st.switch_page("pages/06_🚚_Logistica_Reparto.py")
+
+# --- FILA 3 ---
+c7, c8, c9 = st.columns(3)
+
+with c7: # INFORME CLÍNICO IA (NUEVO)
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 🩺 Informe IA")
+        st.markdown(f'<div style="{estilo_texto}">Generador clínico asistido por Gemini.</div>', unsafe_allow_html=True)
+        
+        # Le ponemos 100% o el valor que prefieras para destacar que es IA
+        st.progress(100, "Módulo IA Activo") 
+        
+        # Botón con key única para evitar conflictos en Streamlit
+        if st.button("Abrir Generador ↗️", key="btn_informe_ia", use_container_width=True):
+            st.switch_page("pages/07_🩺_Informe_Psico.py")
