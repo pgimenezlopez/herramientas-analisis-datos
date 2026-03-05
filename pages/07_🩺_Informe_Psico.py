@@ -42,13 +42,29 @@ if st.button("Generar Informe"):
         with st.spinner("Procesando..."):
             try:
                 # Intentamos con el modelo más actual por defecto
+                # 1. Le damos una directiva maestra (System Instruction)
+                config = genai.types.GenerateContentConfig(
+                    system_instruction="Eres un psicólogo clínico experto. Redacta un informe estructurado estrictamente en tres secciones: 1. Motivo de Consulta, 2. Evaluación del Estado Mental, 3. Plan de Acción. Mantén un tono formal, objetivo y médico."
+                )
+
+                # 2. Generamos el contenido con esa configuración
                 response = client.models.generate_content(
                     model="gemini-2.5-flash", 
-                    contents=notas_sesion
+                    contents=notas_sesion,
+                    config=config
                 )
                 
                 st.subheader("Informe Final:")
                 st.markdown(response.text)
+                
+                # Botón para descargar el informe como archivo de texto (.txt)
+                st.download_button(
+                    label="📥 Descargar Informe Clínico",
+                    data=response.text,
+                    file_name="informe_paciente.txt",
+                    mime="text/plain",
+                    use_container_width=True
+                )
                 st.success("Completado.")
                 
             except Exception as e:
