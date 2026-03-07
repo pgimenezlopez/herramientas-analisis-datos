@@ -33,21 +33,38 @@ client = genai.Client(api_key=api_key)
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="Informe Clínico Altiora", page_icon="🩺")
 st.title("🩺 Altiora: Generador Clínico")
-
 notas_sesion = st.text_area("Notas de la sesión:", height=300)
 
-# --- LÓGICA DE GENERACIÓN ---
-if st.button("Generar Informe"):
-    if notas_sesion:
-        with st.spinner("Procesando..."):
+# --- NUEVO: SECCIÓN DE COMPLIANCE Y LEGAL ---
+st.divider()
+st.warning("⚖️ **Aviso de Responsabilidad Clínica:** Esta herramienta utiliza inteligencia artificial para asistir en la redacción. No sustituye el juicio clínico profesional. El usuario es 100% responsable de revisar, editar y validar la exactitud de este informe antes de anexarlo a cualquier historia médica oficial.")
+
+# El checkbox es nuestro "candado legal"
+consentimiento = st.checkbox("Declaro que los datos ingresados están anonimizados o cuento con el consentimiento explícito del paciente para procesar esta información.")
+st.divider()
+
+# --- LÓGICA DE GENERACIÓN MODIFICADA ---
+# Añadimos type="primary" para que el botón resalte más
+if st.button("Generar Informe", type="primary"):
+    
+    # 1. Validación de notas vacías
+    if not notas_sesion:
+        st.error("📝 Por favor, ingresa las notas de la sesión primero.")
+        
+    # 2. Validación legal (¡El candado!)
+    elif not consentimiento:
+        st.error("🛑 Debes confirmar el consentimiento marcando la casilla de arriba para generar el informe.")
+        
+    # 3. Si todo está en orden, ejecutamos la IA
+    else:
+        with st.spinner("Procesando formato clínico..."):
             try:
-                # Intentamos con el modelo más actual por defecto
-                # 1. Le damos una directiva maestra (System Instruction)
+                # Prompt Engineering (Instrucciones estrictas)
                 config = genai.types.GenerateContentConfig(
                     system_instruction="Eres un psicólogo clínico experto. Redacta un informe estructurado estrictamente en tres secciones: 1. Motivo de Consulta, 2. Evaluación del Estado Mental, 3. Plan de Acción. Mantén un tono formal, objetivo y médico."
                 )
 
-                # 2. Generamos el contenido con esa configuración
+                # Llamada a Gemini
                 response = client.models.generate_content(
                     model="gemini-2.5-flash", 
                     contents=notas_sesion,
@@ -56,28 +73,17 @@ if st.button("Generar Informe"):
                 
                 st.subheader("Informe Final:")
                 st.markdown(response.text)
+                st.success("✅ Generación completada con éxito.")
                 
-                # Botón para descargar el informe como archivo de texto (.txt)
+                # Botón de exportación
                 st.download_button(
-                    label="📥 Descargar Informe Clínico",
+                    label="📥 Descargar Informe Clínico (.txt)",
                     data=response.text,
-                    file_name="informe_paciente.txt",
+                    file_name="informe_clinico.txt",
                     mime="text/plain",
                     use_container_width=True
                 )
-                st.success("Completado.")
                 
             except Exception as e:
                 st.error(f"Error de generación: {e}")
-                st.info("🔍 Buscando los nombres exactos de los modelos disponibles en tu cuenta...")
-                
-                # --- BLOQUE DE DIAGNÓSTICO REPARADO ---
-                try:
-                    models = client.models.list()
-                    # Solo extraemos el nombre, que es un atributo seguro
-                    nombres_modelos = [m.name for m in models]
-                    
-                    st.write("**Modelos que tu API Key tiene permiso para usar:**")
-                    st.write(nombres_modelos[:15])  # Imprime los primeros 15
-                except Exception as e2:
-                    st.error(f"Error secundario al listar modelos: {e2}")
+                # (Aquí puedes dejar el bloque except de diagnóstico que ya tenías)
