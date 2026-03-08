@@ -134,3 +134,4 @@ google-genai
 wordcloud
 matplotlib
 python-dotenv
+fpdf2
