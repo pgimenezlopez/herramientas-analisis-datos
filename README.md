@@ -38,14 +38,15 @@ Asistente inteligente para terapeutas y psicólogos.
 
 ## 🗺️ Roadmap y Backlog (Módulo Altiora)
 
-| ✅ HECHO (MVP 1.0) | 🏃‍♂️ EN PROGRESO (Sprint Actual) | 📋 BACKLOG (Pendientes y Mejoras) |
+| ✅ HECHO (MVP 1.1) | 🏃‍♂️ EN PROGRESO (Sprint Actual) | 📋 BACKLOG (Pendientes y Mejoras) |
 | :--- | :--- | :--- |
-| **Arquitectura:** Repositorio Git y entorno virtual. | **Definición de Prioridades:** Elegir la próxima *feature* a desarrollar para el MVP 2.0. | **Exportación Avanzada:** Descarga en `.pdf` o `.docx` con logo. |
+| **Arquitectura:** Repositorio Git y entorno virtual. | **Planificación:** Definiendo la próxima historia de usuario a desarrollar. | **Exportación Avanzada:** Descarga en `.pdf` o `.docx` con logo. |
 | **Integración IA:** Conexión segura con Gemini API. | | **Base de Datos:** Conectar a Google Sheets para historial de pacientes. |
-| **Deploy en Nube:** App pública en Streamlit Cloud. | | **Prompt Engineering Avanzado:** Formato clínico estandarizado (Ej: SOAP). |
-| **Seguridad:** Lógica híbrida para API Keys (`.env` / `st.secrets`). | | **Autenticación (Login):** Acceso restringido por contraseña para terapeutas. |
+| **Deploy en Nube:** App pública en Streamlit Cloud. | | **Autenticación (Login):** Acceso restringido por contraseña para terapeutas. |
+| **Seguridad:** Lógica híbrida API Keys (`.env` / `st.secrets`). | | |
 | **Compliance:** Checkbox de consentimiento legal obligatorio. | | |
 | **Exportación:** Botón nativo para descargar `.txt`. | | |
+| **Prompt Engineering:** Formato clínico SOAP estandarizado. | | |
 
 ---
 
