@@ -9,7 +9,7 @@ Este repositorio aloja una suite de herramientas desarrolladas en Python para re
 
 ## 🚀 Módulos del Sistema
 
-La aplicación actúa como un "Hub Central" que orquesta cuatro soluciones independientes:
+La aplicación actúa como un "Hub Central" que orquesta cinco soluciones independientes:
 
 ### 1. 📊 Monitor STM (Business Intelligence)
 Dashboard analítico para la visualización de datos de transporte público.
@@ -29,18 +29,49 @@ Sistema de retención de clientes basado en alertas preventivas.
 Herramienta de gestión para profesionales de la salud/coaching.
 - **Función:** Registro de evolución de pacientes, historial de sesiones y métricas de progreso personal.
 
+### 5. 🤖 Altiora: Generador Clínico (IA Generativa)
+Asistente inteligente para terapeutas y psicólogos.
+- **Stack:** Google GenAI (Gemini 2.5 Flash), Dotenv.
+- **Función:** Transforma notas sueltas de sesión en informes clínicos estructurados, con candados legales de privacidad y exportación directa a `.txt`.
+
+---
+
+## 🗺️ Roadmap y Backlog (Módulo Altiora)
+
+| ✅ HECHO (MVP 1.0) | 🏃‍♂️ EN PROGRESO (Sprint Actual) | 📋 BACKLOG (Pendientes y Mejoras) |
+| :--- | :--- | :--- |
+| **Arquitectura:** Repositorio Git y entorno virtual. | **Definición de Prioridades:** Elegir la próxima *feature* a desarrollar para el MVP 2.0. | **Exportación Avanzada:** Descarga en `.pdf` o `.docx` con logo. |
+| **Integración IA:** Conexión segura con Gemini API. | | **Base de Datos:** Conectar a Google Sheets para historial de pacientes. |
+| **Deploy en Nube:** App pública en Streamlit Cloud. | | **Prompt Engineering Avanzado:** Formato clínico estandarizado (Ej: SOAP). |
+| **Seguridad:** Lógica híbrida para API Keys (`.env` / `st.secrets`). | | **Autenticación (Login):** Acceso restringido por contraseña para terapeutas. |
+| **Compliance:** Checkbox de consentimiento legal obligatorio. | | |
+| **Exportación:** Botón nativo para descargar `.txt`. | | |
+
 ---
 
 ## 🛠️ Instalación y Uso Local
 
 1. **Clonar el repositorio:**
-   ```bash
-   git clone [https://github.com/pgimenezlopez/herramientas-analisis-datos.git](https://github.com/pgimenezlopez/herramientas-analisis-datos.git)
 
-2. **Instalar dependiencias:**
+    ```bash
+    git clone https://github.com/pgimenezlopez/herramientas-analisis-datos.git
+    ```
+
+2. **Instalar dependencias:**
+
     ```bash
     pip install -r requirements.txt
+    ```
 
-3. **Ejecutar la suite:**
+3. **Configurar variables de entorno:**
+    Crear un archivo `.env` en la raíz del proyecto y agregar tu API Key de Gemini:
+
+    ```text
+    GEMINI_API_KEY=tu_clave_secreta_aqui
+    ```
+
+4. **Ejecutar la suite:**
+
     ```bash
     streamlit run Home.py
+    ```
