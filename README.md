@@ -40,8 +40,8 @@ Asistente inteligente para terapeutas y psicólogos.
 
 | ✅ HECHO (MVP 1.2) | 🏃‍♂️ EN PROGRESO (Sprint Actual) | 📋 BACKLOG (Pendientes y Mejoras) |
 | :--- | :--- | :--- |
-| **Arquitectura:** Repositorio Git y entorno virtual. | **Planificación:** Definiendo la próxima historia de usuario. | **Base de Datos:** Conectar a Google Sheets para historial. |
-| **Integración IA:** Conexión segura con Gemini API. | | **Autenticación (Login):** Acceso restringido por contraseña. |
+| **Arquitectura:** Repositorio Git y entorno virtual. | **Autenticación (Login):** Acceso restringido por contraseña. | **Base de Datos:** Conectar a Google Sheets para historial. |
+| **Integración IA:** Conexión segura con Gemini API. | | |
 | **Deploy en Nube:** App pública en Streamlit Cloud. | | |
 | **Seguridad:** Lógica híbrida API Keys (`.env` / `st.secrets`). | | |
 | **Compliance:** Checkbox de consentimiento legal. | | |
