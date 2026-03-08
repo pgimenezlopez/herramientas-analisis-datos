@@ -59,9 +59,23 @@ if st.button("Generar Informe", type="primary"):
     else:
         with st.spinner("Procesando formato clínico..."):
             try:
-                # Prompt Engineering (Instrucciones estrictas)
+                # --- PROMPT ENGINEERING AVANZADO (FORMATO SOAP) ---
+                instruccion_soap = """Eres un psicólogo clínico experto. Tu tarea es procesar las notas sueltas de la sesión y redactar un informe psicológico estructurado estrictamente bajo el estándar internacional SOAP.
+
+                Debes incluir obligatoriamente estas cuatro secciones:
+                1. **[S] Subjetivo:** Resume lo que el paciente reporta, sus síntomas, pensamientos, preocupaciones y motivos en sus propias palabras o parafraseados.
+                2. **[O] Objetivo:** Extrae las observaciones clínicas del terapeuta (lenguaje corporal, afecto, apariencia, comportamiento evidente). Si las notas no lo mencionan, indica "Sin observaciones registradas".
+                3. **[A] Análisis (Assessment):** Redacta tu evaluación profesional o impresión clínica basada en la interacción de la sesión. Analiza el progreso o estancamiento.
+                4. **[P] Plan:** Detalla las intervenciones realizadas, tareas asignadas (si las hay), plan de tratamiento futuro y foco para la próxima sesión.
+
+                Reglas estrictas:
+                - Mantén un tono formal, objetivo, empático y médico.
+                - No inventes datos que no estén explícitos o implícitos en las notas originales.
+                - Si la información provista es muy escasa para alguna sección, escribe "Información insuficiente en las notas de la sesión".
+                """
+                
                 config = genai.types.GenerateContentConfig(
-                    system_instruction="Eres un psicólogo clínico experto. Redacta un informe estructurado estrictamente en tres secciones: 1. Motivo de Consulta, 2. Evaluación del Estado Mental, 3. Plan de Acción. Mantén un tono formal, objetivo y médico."
+                    system_instruction=instruccion_soap
                 )
 
                 # Llamada a Gemini
