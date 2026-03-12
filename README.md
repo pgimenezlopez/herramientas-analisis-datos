@@ -34,8 +34,6 @@ Asistente inteligente para terapeutas y psicólogos.
 - **Stack:** Google GenAI (Gemini 2.5 Flash), Dotenv.
 - **Función:** Transforma notas sueltas de sesión en informes clínicos estructurados, con candados legales de privacidad y exportación directa a `.txt`.
 
----
-
 ### 6. 🍱 Sistema Integrado de Viandas (Micro-SaaS)
 
 Plataforma ágil para la gestión integral de negocios gastronómicos de viandas y *meal-prep*. Diseñada para eliminar la fricción operativa de la toma de pedidos manual y automatizar tanto la producción como la logística. 
