@@ -93,7 +93,7 @@ with c4: # COACHING
         st.markdown(f'<div style="{estilo_texto}">Seguimiento de pacientes y métricas.</div>', unsafe_allow_html=True)
         st.progress(90, "Versión MVP")
         if st.button("Abrir Salud ↗️", key="btn_coaching", use_container_width=True):
-            st.switch_page("pages/05_🧘_Coaching_Pacientes.py")
+            st.switch_page("pages/04_🧘_Gestion_de_Pacientes.py")
 
 with c5: # ESTÉTICA (AGENDA)
     with st.container(height=altura_tarjeta, border=True):
@@ -126,3 +126,12 @@ with c7: # INFORME CLÍNICO IA (NUEVO)
         # Botón con key única para evitar conflictos en Streamlit
         if st.button("Abrir Generador ↗️", key="btn_informe_ia", use_container_width=True):
             st.switch_page("pages/07_🩺_Informe_Psico.py")
+
+with c8: # VIANDAS
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 🍱 Pedidos Viandas")
+        st.markdown(f'<div style="{estilo_texto}">Menú digital interactivo y carrito.</div>', unsafe_allow_html=True)
+        # Le ponemos 33% de progreso porque es la Fase 1 de 3
+        st.progress(33, "Fase 1: MVP") 
+        if st.button("Abrir Viandas ↗️", key="btn_viandas", use_container_width=True):
+            st.switch_page("pages/08_🍱_Viandas_App.py")

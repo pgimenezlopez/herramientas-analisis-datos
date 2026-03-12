@@ -36,6 +36,30 @@ Asistente inteligente para terapeutas y psicólogos.
 
 ---
 
+### 6. 🍱 Sistema Integrado de Viandas (Micro-SaaS)
+
+Plataforma ágil para la gestión integral de negocios gastronómicos de viandas y *meal-prep*. Diseñada para eliminar la fricción operativa de la toma de pedidos manual y automatizar tanto la producción como la logística. 
+
+El desarrollo está planificado en tres iteraciones o *sprints*:
+
+### 📌 Roadmap del Proyecto
+
+- [x] **Fase 1: Recepción de Pedidos (El "Atrapamoscas")**
+  - Desarrollo de un menú digital interactivo optimizado para móviles (UX/UI fluida).
+  - Sistema de "carrito de compras" con cálculo de subtotales y total en tiempo real.
+  - Formulario de captura de datos de envío del cliente.
+  - *Siguiente paso:* Integración con base de datos en la nube (Google Sheets) para ingesta de datos asíncrona.
+
+- [ ] **Fase 2: Monitor de Cocina (Consolidación de Producción)**
+  - Creación de un *dashboard* privado para el equipo de cocina.
+  - Lectura en tiempo real de la base de datos y consolidación de pedidos mediante `pandas`.
+  - Visualización de métricas de producción (cantidades exactas a cocinar) para llevar a cero el desperdicio de mercadería.
+
+- [ ] **Fase 3: Última Milla (Optimización de Reparto)**
+  - Integración nativa con el **Módulo 06 (Logística Pyme)**.
+  - Ingesta automática de las direcciones de los clientes para generar la ruta óptima de entrega.
+  - Interfaz de "Modo Chofer" para marcar viandas entregadas desde la calle.
+
 ## 🗺️ Roadmap y Backlog (Módulo Altiora)
 
 | ✅ HECHO (MVP 1.2) | 🏃‍♂️ EN PROGRESO (Sprint Actual) | 📋 BACKLOG (Pendientes y Mejoras) |
