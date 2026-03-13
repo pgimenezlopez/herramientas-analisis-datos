@@ -115,23 +115,26 @@ with c6: # LOGÍSTICA (NUEVO)
 # --- FILA 3 ---
 c7, c8, c9 = st.columns(3)
 
-with c7: # INFORME CLÍNICO IA (NUEVO)
+with c7: # INFORME CLÍNICO IA
     with st.container(height=altura_tarjeta, border=True):
         st.markdown("### 🩺 Informe IA")
         st.markdown(f'<div style="{estilo_texto}">Generador clínico asistido por Gemini.</div>', unsafe_allow_html=True)
-        
-        # Le ponemos 100% o el valor que prefieras para destacar que es IA
         st.progress(100, "Módulo IA Activo") 
-        
-        # Botón con key única para evitar conflictos en Streamlit
         if st.button("Abrir Generador ↗️", key="btn_informe_ia", use_container_width=True):
             st.switch_page("pages/07_🩺_Informe_Psico.py")
 
-with c8: # VIANDAS
+with c8: # VIANDAS - CLIENTES
     with st.container(height=altura_tarjeta, border=True):
-        st.markdown("### 🍱 Pedidos Viandas")
+        st.markdown("### 🍱 App Viandas")
         st.markdown(f'<div style="{estilo_texto}">Menú digital interactivo y carrito.</div>', unsafe_allow_html=True)
-        # Le ponemos 33% de progreso porque es la Fase 1 de 3
-        st.progress(33, "Fase 1: MVP") 
+        st.progress(100, "Fase 1: Ventas SQL") 
         if st.button("Abrir Viandas ↗️", key="btn_viandas", use_container_width=True):
             st.switch_page("pages/08_🍱_Viandas_App.py")
+
+with c9: # VIANDAS - COCINA (NUEVO)
+    with st.container(height=altura_tarjeta, border=True):
+        st.markdown("### 🍳 Monitor Cocina")
+        st.markdown(f'<div style="{estilo_texto}">Dashboard privado de producción.</div>', unsafe_allow_html=True)
+        st.progress(100, "Fase 2: Consolidación") 
+        if st.button("Abrir Monitor ↗️", key="btn_monitor_cocina", use_container_width=True):
+            st.switch_page("pages/09_🍳_Monitor_Cocina.py")

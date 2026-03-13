@@ -46,17 +46,18 @@ El desarrollo está planificado en tres iteraciones o *sprints*:
   - Desarrollo de un menú digital interactivo optimizado para móviles (UX/UI fluida).
   - Sistema de "carrito de compras" con cálculo de subtotales y total en tiempo real.
   - Formulario de captura de datos de envío y método de pago.
-  - *Arquitectura:* Integración nativa con base de datos relacional en la nube (**Supabase / PostgreSQL**) mediante SQLAlchemy para una ingesta de datos asíncrona, estructurada y segura.
+  - *Arquitectura:* Integración nativa con base de datos relacional en la nube (**Supabase / PostgreSQL**) mediante SQLAlchemy.
 
-- [ ] **Fase 2: Monitor de Cocina (Consolidación de Producción)**
-  - Creación de un *dashboard* privado para el equipo de cocina.
-  - Lectura en tiempo real de la base de datos (SQL) y consolidación de pedidos mediante `pandas`.
-  - Visualización de métricas de producción (cantidades exactas a cocinar) y facturación estimada.
+- [x] **Fase 2: Monitor de Cocina (Consolidación de Producción)**
+  - Creación de un *dashboard* privado protegido con credenciales.
+  - Lectura en tiempo real de la base de datos (SQL) y limpieza de strings de texto.
+  - Consolidación de pedidos mediante `pandas` (`groupby`) para totalizar porciones a cocinar.
+  - Visualización de métricas financieras (ticket promedio, facturación) y planilla de despacho.
 
 - [ ] **Fase 3: Última Milla (Optimización de Reparto)**
   - Integración nativa con el **Módulo 06 (Logística Pyme)**.
-  - Ingesta automática de las direcciones de los clientes desde PostgreSQL para generar la ruta óptima de entrega.
-  - Interfaz de "Modo Chofer" para marcar viandas entregadas desde la calle.
+  - Ingesta automática de direcciones desde PostgreSQL para generar la ruta óptima de entrega.
+  
 ## 🗺️ Roadmap y Backlog (Módulo Altiora)
 
 | ✅ HECHO (MVP 1.2) | 🏃‍♂️ EN PROGRESO (Sprint Actual) | 📋 BACKLOG (Pendientes y Mejoras) |
