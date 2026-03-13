@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from sqlalchemy import text
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="Viandas Caseras", page_icon="🍱", layout="centered")
@@ -82,14 +83,24 @@ else:
     
     st.write("")
     
-    # --- 5. FORMULARIO DE ENVÍO ---
-    st.markdown("#### 📍 Datos de Envío")
+    # --- 5. FORMULARIO DE ENVÍO Y PAGO ---
+    st.markdown("#### 📍 Datos de Envío y Pago")
     
     with st.form("form_pedido"):
         nombre = st.text_input("Tu Nombre y Apellido")
         celular = st.text_input("Celular de contacto")
         direccion = st.text_input("Dirección de entrega (Ej: 18 de Julio 1234, Apto 5)")
         barrio = st.selectbox("Barrio", ["Centro", "Cordón", "Pocitos", "Buceo", "Malvín", "Otro"])
+        
+        st.write("") # Espaciador
+        st.markdown("**💳 Forma de Pago**")
+        # ACÁ ESTÁ LA VARIABLE QUE FALTABA
+        forma_pago = st.radio(
+            "Seleccioná cómo vas a abonar:", 
+            ["💵 Efectivo (al recibir)", "🏦 Transferencia (BROU/Itaú/Santander)", "📱 MercadoPago"],
+            label_visibility="collapsed"
+        )
+        
         notas = st.text_area("Aclaraciones (Ej: Sin sal, el timbre no anda, pago con $1000)")
         
         # Botón de confirmación gigante
@@ -97,8 +108,46 @@ else:
         
         if enviado:
             if nombre and direccion and celular:
-                # ACÁ ES DONDE GUARDAREMOS EN GOOGLE SHEETS EN LA FASE 2
-                st.success(f"¡Excelente {nombre}! Recibimos tu pedido por ${total_pesos}. Lo llevaremos a {direccion} ({barrio}).")
-                st.balloons()
+                with st.spinner("Procesando pedido y enviando a la base de datos..."):
+                    try:
+                        # 1. Armamos el string de qué platos eligió
+                        resumen_platos = ", ".join([f"{d['cantidad']}x {p}" for p, d in pedido_actual.items()])
+                        
+                        # 2. Conectamos a la base de datos SQL
+                        conn = st.connection("sql")
+                        
+                        # 3. Ejecutamos el INSERT de forma segura
+                        with conn.session as s:
+                            s.execute(
+                                text("""
+                                    INSERT INTO pedidos 
+                                    (nombre, celular, direccion, barrio, forma_pago, detalle, total, notas)
+                                    VALUES 
+                                    (:nombre, :celular, :direccion, :barrio, :forma_pago, :detalle, :total, :notas)
+                                """),
+                                {
+                                    "nombre": nombre,
+                                    "celular": celular,
+                                    "direccion": direccion,
+                                    "barrio": barrio,
+                                    "forma_pago": forma_pago,
+                                    "detalle": resumen_platos,
+                                    "total": total_pesos,
+                                    "notas": notas
+                                }
+                            )
+                            s.commit() # Guardamos los cambios definitivamente
+                        
+                        # Mensaje de éxito dinámico según forma de pago
+                        if "Efectivo" in forma_pago:
+                            mensaje_pago = "Abonás en efectivo al recibir."
+                        else:
+                            mensaje_pago = f"Te contactaremos al {celular} para los datos de pago."
+
+                        st.success(f"¡Excelente {nombre}! Recibimos tu pedido por **${total_pesos}**. Lo llevaremos a {direccion} ({barrio}). {mensaje_pago}")
+                        st.balloons()
+                        
+                    except Exception as e:
+                        st.error(f"Hubo un error al conectar con la base de datos: {e}")
             else:
                 st.error("⚠️ Por favor, completá tu nombre, celular y dirección para el envío.")
