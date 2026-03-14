@@ -11,4 +11,6 @@ __pycache__/
 .DS_Store
 
 # Archivos de datos (Opcional: Descomenta la línea de abajo si no quieres subir el Excel)
-# *.xlsx
+# *.xlsxvenv/
+.streamlit/secrets.toml
+__pycache__/

@@ -3,10 +3,16 @@ import pandas as pd
 from sqlalchemy import text
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
-st.set_page_config(page_title="Viandas Caseras", page_icon="🍱", layout="centered")
+# Agregamos initial_sidebar_state="collapsed" para esconder el menú izquierdo por defecto
+st.set_page_config(
+    page_title="Viandas Caseras", 
+    page_icon="🍱", 
+    layout="centered",
+    initial_sidebar_state="collapsed" 
+)
 
-# --- 1. SIMULAMOS LA BASE DE DATOS (El futuro Google Sheets) ---
-# Esto es lo que tu cuñada editará en su Excel los domingos.
+# --- 1. MENÚ DE PLATOS DISPONIBLES ---
+# Por ahora los platos están fijos en código, pero la venta va a Supabase.
 datos_menu = {
     "Plato": [
         "Pollo al Horno con Papas Rústicas", 
@@ -38,7 +44,7 @@ st.subheader("🍽️ Menú Disponible")
 pedido_actual = {}
 total_pesos = 0
 
-# Generamos la interfaz leyendo los datos (sin importar cuántos platos haya)
+# Generamos la interfaz leyendo los datos
 for index, row in df_menu.iterrows():
     # Usamos columnas para que quede el texto a la izquierda y el botón a la derecha
     col_texto, col_boton = st.columns([3, 1]) 
@@ -49,7 +55,6 @@ for index, row in df_menu.iterrows():
         
     with col_boton:
         # El botón de + y -
-        # El key único es vital para que Streamlit no mezcle los botones
         cantidad = st.number_input(
             "Cant.", 
             min_value=0, 
@@ -94,7 +99,6 @@ else:
         
         st.write("") # Espaciador
         st.markdown("**💳 Forma de Pago**")
-        # ACÁ ESTÁ LA VARIABLE QUE FALTABA
         forma_pago = st.radio(
             "Seleccioná cómo vas a abonar:", 
             ["💵 Efectivo (al recibir)", "🏦 Transferencia (BROU/Itaú/Santander)", "📱 MercadoPago"],
@@ -136,7 +140,7 @@ else:
                                     "notas": notas
                                 }
                             )
-                            s.commit() # Guardamos los cambios definitivamente
+                            s.commit() 
                         
                         # Mensaje de éxito dinámico según forma de pago
                         if "Efectivo" in forma_pago:

@@ -1,8 +1,0 @@
-Fecha,Orden,Cliente,Barrio,Pedido,lat,lon,Estado,Notas_Ruta
-2026-01-30,1,Bar 1 ,Centro,Caja #,-34.906729478689336,-56.189602448921725,Completado,
-2026-01-30,4,Bar 7,La Blanqueada,Caja #,-34.88088815191249,-56.149137235655864,Completado,
-2026-01-30,3,Bar 3,Malvín,Caja #,-34.89371141717012,-56.11188465505155,Completado,
-2026-01-30,5,Bar 16,Carrasco,Caja #,-34.88305976170618,-56.058104958273184,Completado,
-2026-01-30,2,Bar 2,Aguada,Caja #,-34.88955467644626,-56.19058164253397,Completado,no estaba (00:44)
-2026-01-30,7,Bar 2,Aguada,Caja #,-34.88884511179282,-56.18953995796366,Pendiente,
-2026-01-30,6,Bar 1 ,Centro,Caja #,-34.9054269723849,-56.190920595690514,Pendiente,
